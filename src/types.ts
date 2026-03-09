@@ -58,6 +58,8 @@ export interface PersonalityProfile {
     threesomes: string;
     worship: string;
   };
+  darkMindBreakdown: string;
+  behavioralBlueprint: string;
 }
 
 export interface GuideSection {

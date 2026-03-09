@@ -29,6 +29,7 @@ export default function EncyclopediaPage() {
     { id: 'dating', label: 'Dating Plan', icon: Compass },
     { id: 'relationship', label: 'Relationship', icon: Shield },
     { id: 'freak', label: 'Freak', icon: HandMetal },
+    { id: 'darkmind', label: 'Dark Mind', icon: Brain },
   ] as const;
 
   const [activeTab, setActiveTab] = React.useState<typeof tabs[number]['id']>('overview');
@@ -475,6 +476,41 @@ export default function EncyclopediaPage() {
                     "Every woman has a 'freak' side. Your job is to create a space safe enough for her to express it without judgment."
                   </p>
                 </div>
+              </div>
+            )}
+
+            {activeTab === 'darkmind' && (
+              <div className="space-y-8">
+                <section className="p-8 rounded-2xl bg-white/5 border border-white/10 space-y-8">
+                  <h3 className="text-2xl font-bold flex items-center gap-3 text-red-400">
+                    <Brain className="w-6 h-6" />
+                    Dark Mind Breakdown
+                  </h3>
+                  <p className="text-lg text-slate-300 leading-relaxed">
+                    {profile.darkMindBreakdown}
+                  </p>
+                </section>
+
+                <section className="p-8 rounded-2xl bg-white/5 border border-white/10 space-y-8">
+                  <h3 className="text-2xl font-bold flex items-center gap-3 text-teal-400">
+                    <Target className="w-6 h-6" />
+                    Behavioral Blueprint
+                  </h3>
+                  <div className="space-y-4">
+                    {profile.behavioralBlueprint.split(/(?=\d+\.\s\*\*)/).filter(Boolean).map((step, i) => {
+                      const match = step.match(/(\d+\.\s\*\*(.*?)\*\*:\s*)(.*)/);
+                      if (match) {
+                        return (
+                          <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                            <h4 className="font-bold text-teal-400 mb-2">{match[2]}</h4>
+                            <p className="text-slate-300">{match[3]}</p>
+                          </div>
+                        );
+                      }
+                      return <p key={i} className="text-slate-300">{step}</p>;
+                    })}
+                  </div>
+                </section>
               </div>
             )}
           </motion.div>

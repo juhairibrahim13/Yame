@@ -47,12 +47,12 @@ export default function AdvisorPage() {
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       const model = ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.1-pro-preview",
         contents: [
           {
             role: "user",
             parts: [{
-              text: `You are the "Yame Advisor", an expert in the Pandora's Box personality profiling system for women. 
+              text: `You are the "Yame Advisor", an expert in the EPIMETHEUS personality profiling system for women. 
               Your goal is to provide strategic, high-level advice for men navigating dating and social dynamics.
               
               Context:

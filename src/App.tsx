@@ -7,6 +7,9 @@ import GuidePage from './pages/GuidePage';
 import CalibrationPage from './pages/CalibrationPage';
 import FieldGuidePage from './pages/FieldGuidePage';
 import AdvisorPage from './pages/AdvisorPage';
+import ComparePage from './pages/ComparePage';
+import GlossaryPage from './pages/GlossaryPage';
+import QuickReferencePage from './pages/QuickReferencePage';
 
 export default function App() {
   return (
@@ -19,6 +22,9 @@ export default function App() {
           <Route path="/calibration" element={<CalibrationPage />} />
           <Route path="/field-guide" element={<FieldGuidePage />} />
           <Route path="/advisor" element={<AdvisorPage />} />
+          <Route path="/compare" element={<ComparePage />} />
+          <Route path="/glossary" element={<GlossaryPage />} />
+          <Route path="/quick-reference" element={<QuickReferencePage />} />
         </Routes>
       </Layout>
     </Router>

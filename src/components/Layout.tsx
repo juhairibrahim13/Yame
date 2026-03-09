@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, BookOpen, Compass, Target, Menu, X, Shield, Map } from 'lucide-react';
+import { Home, BookOpen, Compass, Target, Menu, X, Shield, Map, GitCompare, BookA, Zap, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -15,15 +15,27 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isLightMode, setIsLightMode] = React.useState(false);
   const location = useLocation();
+
+  React.useEffect(() => {
+    if (isLightMode) {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  }, [isLightMode]);
 
   const navItems = [
     { name: 'Home', path: '/', icon: Home },
     { name: 'Encyclopedia', path: '/encyclopedia', icon: BookOpen },
+    { name: 'Compare', path: '/compare', icon: GitCompare },
     { name: 'Guide', path: '/guide', icon: Compass },
     { name: 'Calibration', path: '/calibration', icon: Target },
     { name: 'Field Guide', path: '/field-guide', icon: Map },
     { name: 'Advisor', path: '/advisor', icon: Shield },
+    { name: 'Glossary', path: '/glossary', icon: BookA },
+    { name: 'Quick Ref', path: '/quick-reference', icon: Zap },
   ];
 
   return (
@@ -44,12 +56,12 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="w-8 h-8 rounded-lg teal-gradient flex items-center justify-center shadow-lg shadow-teal-500/20 group-hover:scale-110 transition-transform glow-teal">
                   <BookOpen className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold tracking-tight text-gradient">PANDORA'S BOX</span>
+                <span className="text-xl font-bold tracking-tight text-gradient">EPIMETHEUS</span>
               </Link>
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center">
               <div className="ml-10 flex items-baseline space-x-1">
                 {navItems.map((item) => (
                   <Link
@@ -72,10 +84,23 @@ export default function Layout({ children }: LayoutProps) {
                   </Link>
                 ))}
               </div>
+              <button
+                onClick={() => setIsLightMode(!isLightMode)}
+                className="ml-4 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors no-invert"
+                title="Toggle Theme"
+              >
+                {isLightMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              </button>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center gap-2">
+              <button
+                onClick={() => setIsLightMode(!isLightMode)}
+                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 transition-colors no-invert"
+              >
+                {isLightMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 focus:outline-none transition-colors"
@@ -143,7 +168,7 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="w-8 h-8 rounded-lg teal-gradient flex items-center justify-center glow-teal">
                   <BookOpen className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold tracking-tight text-gradient">PANDORA'S BOX</span>
+                <span className="text-xl font-bold tracking-tight text-gradient">EPIMETHEUS</span>
               </div>
               <p className="text-slate-500 text-sm max-w-md">
                 The ultimate system for understanding female psychology and personality dynamics. 

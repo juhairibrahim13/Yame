@@ -18,7 +18,7 @@ export default function GuidePage() {
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">The Strategy Guide</h1>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
-          Master the core principles of the Pandora's Box system. From initial approach to long-term devotion.
+          Master the core principles of the EPIMETHEUS system. From initial approach to long-term devotion.
         </p>
       </div>
 
@@ -66,6 +66,15 @@ export default function GuidePage() {
 
             <div className="prose prose-invert prose-teal max-w-none">
               {activeSection.content.split('\n').map((line, i) => {
+                if (line.startsWith('# ')) {
+                  return <h1 key={i} className="text-3xl font-bold text-white mt-8 mb-4">{line.substring(2)}</h1>;
+                }
+                if (line.startsWith('## ')) {
+                  return <h2 key={i} className="text-2xl font-bold text-teal-400 mt-8 mb-4">{line.substring(3)}</h2>;
+                }
+                if (line.startsWith('### ')) {
+                  return <h3 key={i} className="text-xl font-bold text-slate-200 mt-6 mb-3">{line.substring(4)}</h3>;
+                }
                 if (line.startsWith('1.') || line.startsWith('2.') || line.startsWith('3.')) {
                   return <p key={i} className="text-lg text-slate-300 leading-relaxed font-bold mt-6">{line}</p>;
                 }
@@ -77,6 +86,7 @@ export default function GuidePage() {
                     </div>
                   );
                 }
+                if (line.trim() === '') return <br key={i} />;
                 return <p key={i} className="text-lg text-slate-400 leading-relaxed mt-4">{line}</p>;
               })}
             </div>

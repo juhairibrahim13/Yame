@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, RotateCcw, CheckCircle2, AlertCircle, Target, Compass, Brain, Map } from 'lucide-react';
+import { ChevronRight, RotateCcw, CheckCircle2, AlertCircle, Target, Compass, Brain, Map, BookOpen } from 'lucide-react';
 import { quizQuestions } from '../data/quizQuestions';
 import { personalityTypes } from '../data/personalityTypes';
 import { Link } from 'react-router-dom';
@@ -59,22 +59,76 @@ export default function HomePage() {
   return (
     <div className="space-y-12">
       {currentStep === 'hero' && (
-        <div className="text-center space-y-8 py-12">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-medium mb-4"
-          >
-            Unlock the Secrets of the Female Mind
-          </motion.div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-            Master the Art of <br />
-            <span className="text-gradient">Calibration & Connection</span>
-          </h1>
-          <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Stop guessing. Start reading. The Pandora's Box system by Yame Coaching provides a scientific framework to understand any woman's personality type in minutes.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <div className="text-center space-y-12 py-12">
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-medium mb-4"
+            >
+              Where Hope Meets Connection
+            </motion.div>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+              EPIMETHEUS
+            </h1>
+            <p className="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-medium italic">
+              "Open the box. Find the hope."
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto text-left space-y-8 glass-card p-8 md:p-12">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-teal-400 flex items-center gap-2">
+                <BookOpen className="w-6 h-6" /> The Story
+              </h2>
+              <p className="text-slate-300 leading-relaxed text-lg">
+                In Greek mythology, Epimetheus was the one who opened his heart to Pandora—not despite the warnings, but because he understood something others didn't: <strong>Some things are worth the risk.</strong>
+              </p>
+              <p className="text-slate-300 leading-relaxed text-lg">
+                When Pandora opened the box, the world was flooded with chaos, doubt, and tests. But at the very bottom, something remained: <strong>Hope.</strong>
+              </p>
+              <p className="text-slate-300 leading-relaxed text-lg italic">
+                Epimetheus saw past the trials. He saw her. And he held onto what mattered most.
+              </p>
+            </div>
+
+            <div className="space-y-4 pt-6 border-t border-white/5">
+              <h2 className="text-2xl font-bold text-teal-400 flex items-center gap-2">
+                <Target className="w-6 h-6" /> The Connection
+              </h2>
+              <p className="text-slate-300 leading-relaxed text-lg">
+                She's not simple. Love isn't either. Epimetheus is the first dating app built on the EPIMETHEUS philosophy:
+              </p>
+              <ul className="space-y-4 mt-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  <p className="text-slate-300"><strong className="text-white">Meet the Testers</strong> – Women who guard their hearts because they're worth guarding. Profiles reveal her "tests" upfront—so you know what you're walking into.</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  <p className="text-slate-300"><strong className="text-white">Attract the Investors</strong> – Once trust is built, she gives back tenfold. Matches deepen only when mutual effort is shown.</p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  <p className="text-slate-300"><strong className="text-white">Find the Hope</strong> – Real connection is the reward for those who persist.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-4 pt-6 border-t border-white/5">
+              <h2 className="text-2xl font-bold text-teal-400 flex items-center gap-2">
+                <Compass className="w-6 h-6" /> Why Epimetheus?
+              </h2>
+              <p className="text-slate-300 leading-relaxed text-lg">
+                Because modern dating is a box. Some people open it and run. Some get stuck in the chaos. But the ones who stay? They find what's real.
+              </p>
+              <p className="text-teal-400 font-bold text-xl text-center pt-4">
+                Epimetheus is for the ones who stay.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <button
               onClick={handleStartQuiz}
               className="w-full sm:w-auto px-8 py-4 rounded-xl teal-gradient text-white font-bold shadow-xl shadow-teal-500/20 hover:scale-105 transition-all flex items-center justify-center gap-2 group"
